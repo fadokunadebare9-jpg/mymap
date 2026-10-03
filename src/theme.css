@@ -1,0 +1,71 @@
+/* ===== Redesign: brighter, friendlier, bigger touch targets ===== */
+:root {
+  --glass: #fff; --paper: #f6f8fc; --dock: 68px; --r: 20px;
+  --sans: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sh: 0 10px 30px rgba(0, 33, 71, .16);
+}
+body { background: var(--paper) }
+input, select, .field { font-size: 16px }
+.btn, .item, .tab, .seg button { min-height: 44px }
+.btn { border-radius: 14px }
+.chip { min-height: 40px; padding: 8px 16px }
+
+/* Logo */
+.logo { width: 44px; height: 44px; object-fit: contain; flex: none; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0, 33, 71, .15) }
+
+/* Panel and header */
+.panel { background: var(--paper); backdrop-filter: none; -webkit-backdrop-filter: none; border-radius: 28px 28px 0 0;
+  bottom: calc(var(--dock) + env(safe-area-inset-bottom, 0px)); height: calc(86vh - var(--dock)); height: calc(86dvh - var(--dock));
+  box-shadow: 0 -10px 34px rgba(0, 33, 71, .22) }
+.grip { background: rgba(0, 33, 71, .25) }
+.handle { padding: 12px 18px 6px }
+.head h1 { font-size: 1.25rem; letter-spacing: -.01em }
+.head small { font-size: .8rem }
+.body { padding: 16px }
+
+/* Tabs (desktop) */
+.tabs { background: #e8edf5; border-radius: 14px; margin: 8px 14px 0 }
+.tab { font-size: .86rem }
+.tab[aria-selected="true"] { background: #fff; color: var(--navy); box-shadow: 0 2px 8px rgba(0, 33, 71, .15) }
+
+/* Bottom navigation (phones) */
+.dock { position: fixed; z-index: 1100; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+  background: #fff; border-top: 1px solid var(--line); padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -6px 20px rgba(0, 33, 71, .1) }
+.dock button { display: grid; justify-items: center; gap: 3px; padding: 7px 0 5px; border-radius: 14px; font-size: .7rem; font-weight: 700; color: var(--mute); transition: background .2s, color .2s }
+.dock button[aria-current="page"] { color: var(--navy); background: rgba(212, 175, 55, .22) }
+
+/* Search, quick finds, lists */
+.search input { padding: 14px 16px 14px 46px; border-radius: 16px; border: 2px solid transparent; box-shadow: 0 2px 10px rgba(0, 33, 71, .1) }
+.search input:focus { border-color: var(--gold) }
+.search > svg { left: 15px; top: 15px }
+.quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0 6px }
+.qt { display: grid; justify-items: center; gap: 6px; padding: 12px 4px; border-radius: 16px; background: #fff; box-shadow: 0 1px 6px rgba(0, 33, 71, .1); font-weight: 700; font-size: .78rem; color: var(--navy); text-align: center; transition: transform .1s }
+.qt:active { transform: scale(.97) }
+.qt .ico { width: 42px; height: 42px; border-radius: 14px }
+.item { background: #fff; border: 1.5px solid transparent; box-shadow: 0 1px 5px rgba(0, 33, 71, .08); padding: 10px 12px; border-radius: 16px }
+.item:hover, .item:focus-visible { border-color: var(--gold) }
+.suggest .item { box-shadow: none }
+.ico { width: 40px; height: 40px; border-radius: 12px }
+.card { background: #fff; border: 0; border-radius: 18px; box-shadow: 0 2px 10px rgba(0, 33, 71, .08) }
+
+/* Floating buttons */
+.fab { width: 52px; height: 52px; background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none }
+.fab.sos { font-size: .85rem; letter-spacing: .02em }
+#openPanel { height: 52px }
+
+/* Sign-in screen */
+.auth { background: radial-gradient(circle at 80% 8%, rgba(212, 175, 55, .3), transparent 45%), linear-gradient(160deg, #001a38, #0b3a73) }
+.auth-card { border-radius: 26px; padding: 26px 22px }
+.auth-card .logo { display: block; margin: 0 auto 12px; box-shadow: none; background: none }
+.auth-card h1 { font-size: 1.5rem }
+.auth-card .guest { background: var(--navy); color: #fff; margin-top: 6px }
+
+@media (min-width: 800px) {
+  .panel { left: 16px; top: 16px; bottom: 16px; right: auto; width: 420px; height: auto; border-radius: 22px }
+  .dock { display: none }
+}
+@media (max-width: 799px) {
+  .panel > .tabs { display: none }
+  .leaflet-control-zoom { display: none }
+}
